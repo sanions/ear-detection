@@ -1,4 +1,3 @@
-from json import load
 import cv2
 import os
 import sys

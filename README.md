@@ -10,6 +10,19 @@ After cloning the repo, make sure to install the following dependencies by runni
 pip install opencv-python
 ~~~
 
+**Keras Tensorflow:**
+~~~
+pip install tensorflow
+~~~
+
+**Numpy and Matplotlib:**
+~~~
+pip install numpy
+~~~
+~~~
+pip install matplotlib
+~~~
+
 ## Input Image Requirements
 
 The image used as the input should meet the following requirements for best results.
@@ -50,7 +63,7 @@ python3 main.py [your-filename]
 
 ## Training a new model
 
-1. Download the data and labels from [here](https://www.dropbox.com/scl/fo/4h3jpyvkjiwg635rp9v0r/h?dl=0&rlkey=ewafuyj294vxudjdb6uum6yaa). 
+1. Download the data and labels from [here](##TODO). 
 
 2. If you want to make changes to the model, edit the `src/model/train-model.py` [file](https://github.com/snykra/ear-detection/blob/master/src/model/train-model.py). Remember to update the name of the saved model to make sure pre-trained models are not overwritten. 
 
