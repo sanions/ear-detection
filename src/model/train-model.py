@@ -59,34 +59,56 @@ def load_data(size=3000):
 
 def train(X, Y):
     model = Sequential()
-    model.add(Conv2D(16, (3, 3), input_shape=(224, 224, 3), kernel_initializer='random_uniform', activation='relu'))
+
+    model.add(Conv2D(32, (4, 4), input_shape=(224, 224, 3), activation='relu'))
+    model.add(Conv2D(32, (4, 4), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.1))
 
     model.add(Conv2D(32, (3, 3), activation='relu'))
+    model.add(Conv2D(32, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
 
     model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    model.add(Conv2D(128, (3, 3), activation='relu'))
-    model.add(BatchNormalization())
+    model.add(Conv2D(64, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.3))
 
-    model.add(Conv2D(256, (5, 5), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    
-    model.add(Conv2D(512, (5, 5), activation='relu'))
-    model.add(BatchNormalization())
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.5))
-
     model.add(Flatten())
+    model.add(Dense(1500, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(1500, activation='relu'))
 
-    model.add(Dense(1024, activation='relu'))
-    model.add(BatchNormalization())
-    model.add(Dropout(0.7))
+    model.add(Dense(110, activation='relu'))
+    # model.add(Conv2D(16, (3, 3), input_shape=(224, 224, 3), kernel_initializer='random_uniform', activation='relu'))
 
-    model.add(Dense(110))
+    # model.add(Conv2D(32, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    # model.add(Conv2D(64, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    # model.add(Conv2D(128, (3, 3), activation='relu'))
+    # model.add(BatchNormalization())
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.3))
+
+    # model.add(Conv2D(256, (5, 5), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    
+    # model.add(Conv2D(512, (5, 5), activation='relu'))
+    # model.add(BatchNormalization())
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.5))
+
+    # model.add(Flatten())
+
+    # model.add(Dense(1024, activation='relu'))
+    # model.add(BatchNormalization())
+    # model.add(Dropout(0.7))
+
+    # model.add(Dense(110))
 
     adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
 
@@ -94,7 +116,7 @@ def train(X, Y):
 
     model.fit(X, Y, epochs=500, batch_size=64)
 
-    model.save("../pretrained-models/cnn-models/cnn-model-2.h5")
+    model.save("../pretrained-models/cnn-models/cnn-model-2.h5") # TODO: change model name here to prevent overwriting
 
     model.summary()
 

@@ -1,12 +1,12 @@
 from json import load
 import cv2
 import os
+import sys
 from math import dist
 
 from utils import crop_to_ear, load_X, find_landmarks, calculate_size_ratio
 
 INPUT_DIR = './images/input/'
-img = cv2.imread('./images/input/saniya-ear-dot-1.jpg')
 
 def main(input_img='none', input_dir=INPUT_DIR):
     if (input_img != 'none'):
@@ -35,4 +35,7 @@ def main(input_img='none', input_dir=INPUT_DIR):
         print(f'approx. distances: {d1} inches, {d2} inches' )
 
 if __name__ == '__main__':
+    args = sys.argv
+    filename = args[1]
+    img = cv2.imread('./images/input/' + filename)
     main(input_img=img)
