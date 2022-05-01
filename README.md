@@ -3,7 +3,7 @@ Finding the distance between the top of the ear and the opening of the ear canal
 
 ## Initialization
 
-After cloning the repo, make sure to install the following dependencies by running the associated command:
+After cloning the repo, make sure to install the following dependencies:
 
 **OpenCV for Python:** 
 ~~~
