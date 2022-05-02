@@ -84,6 +84,9 @@ To **change the dimensions**, update the `metric` variable.
 
 ## References
 
+### Datasets
+See sheet [here](https://docs.google.com/spreadsheets/d/1V0Uz_a1sO2GemPQG_aZdIIxw7FyNRtB7P2EzyRpHeF0/edit?usp=sharing).
+
 ### Haar Cascades for Ear Detection
 1. https://github.com/celiacintas/tests_landmarks/blob/master/files/cascade_lateral_ears_opencv.xml
 2. https://github.com/shivangbansal/Haar-Cascade-Ear-Training
@@ -92,4 +95,7 @@ To **change the dimensions**, update the `metric` variable.
 1. Cintas, C., Quinto-Sánchez, M., Acuña, V., Paschetta, C., de Azevedo, S., Cesar Silva de Cerqueira, C., Ramallo, V., Gallo, C., Poletti, G., Bortolini, M.C., Canizales-Quinteros, S., Rothhammer, F., Bedoya, G., Ruiz-Linares, A., Gonzalez-José, R. and Delrieux, C. (2017), Automatic ear detection and feature extraction using Geometric Morphometrics and convolutional neural networks. IET Biom., 6: 211-223. https://doi.org/10.1049/iet-bmt.2016.0002
 
 2. https://github.com/kbulutozler/ear-landmark-detection-with-CNN
+
+3. https://ibug.doc.ic.ac.uk/resources/ibug-ears/
+
 
