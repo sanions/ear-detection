@@ -61,6 +61,73 @@ streamlit run st-app.py
 python3 main.py [your-filename]
 ~~~
 
+## Model Details 
+
+The model finds 55 landmark points around the entire ear. The top of the ear is landmark #0 and the entrance of the ear canal is around landmarks #35 and #36. Model accuracy is calculated by finding the distance between the predicted locations for landmarks #0 (top of ear) and #35 (ear canal) and the expected values. 
+
+### [`cnn-model-2.h5`](https://github.com/snykra/ear-detection/blob/master/src/pretrained-models/cnn-models/cnn-model-2.h5)
+
+**Model Accuracy:** `0.8657` 
+
+~~~
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 222, 222, 16)      448       
+                                                                 
+ conv2d_1 (Conv2D)           (None, 220, 220, 32)      4640      
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 110, 110, 32)     0         
+ )                                                               
+                                                                 
+ conv2d_2 (Conv2D)           (None, 108, 108, 64)      18496     
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 54, 54, 64)       0         
+ 2D)                                                             
+                                                                 
+ conv2d_3 (Conv2D)           (None, 52, 52, 128)       73856     
+                                                                 
+ batch_normalization (BatchN  (None, 52, 52, 128)      512       
+ ormalization)                                                   
+                                                                 
+ max_pooling2d_2 (MaxPooling  (None, 26, 26, 128)      0         
+ 2D)                                                             
+                                                                 
+ dropout (Dropout)           (None, 26, 26, 128)       0         
+                                                                 
+ conv2d_4 (Conv2D)           (None, 22, 22, 256)       819456    
+                                                                 
+ max_pooling2d_3 (MaxPooling  (None, 11, 11, 256)      0         
+ 2D)                                                             
+                                                                 
+ conv2d_5 (Conv2D)           (None, 7, 7, 512)         3277312   
+                                                                 
+ batch_normalization_1 (Batc  (None, 7, 7, 512)        2048      
+ hNormalization)                                                 
+                                                                 
+ max_pooling2d_4 (MaxPooling  (None, 3, 3, 512)        0         
+ 2D)                                                             
+                                                                 
+ dropout_1 (Dropout)         (None, 3, 3, 512)         0         
+                                                                 
+ flatten (Flatten)           (None, 4608)              0         
+                                                                 
+ dense (Dense)               (None, 1024)              4719616   
+                                                                 
+ batch_normalization_2 (Batc  (None, 1024)             4096      
+ hNormalization)                                                 
+                                                                 
+ dropout_2 (Dropout)         (None, 1024)              0         
+                                                                 
+ dense_1 (Dense)             (None, 110)               112750    
+                                                                 
+=================================================================
+Total params: 9,033,230
+Trainable params: 9,029,902
+Non-trainable params: 3,328
+~~~
+
 ## Training a new model
 
 1. Download the data and labels from [here](##TODO). 
