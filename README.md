@@ -130,7 +130,7 @@ Non-trainable params: 3,328
 
 ## Training a new model
 
-1. Download the data and labels from [here](##TODO). 
+1. Download the data and labels from [here](https://www.dropbox.com/sh/kzj467f1koiumhu/AAADhGmxDZzcoZv09tByarTHa?dl=0). 
 
 2. If you want to make changes to the model, edit [`src/model/train-model.py`](https://github.com/snykra/ear-detection/blob/master/src/model/train-model.py). Remember to update the name of the saved model to make sure pre-trained models are not overwritten. 
 
