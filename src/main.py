@@ -17,7 +17,9 @@ def main(input_img='none', input_dir=INPUT_DIR):
 
         d1 = dist(ot, tr1) * ratio
         d2 = dist(ot, tr2) * ratio
-        
+
+        print(f'approx. distances: {d1} inches, {d2} inches' )
+
         return d1, d2
         
     for file in os.scandir(input_dir):
