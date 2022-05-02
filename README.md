@@ -29,8 +29,8 @@ The image used as the input should meet the following requirements for best resu
 
 1. It should be cropped to contian just the ear and reference object. The ear should be at least one-fifth of the width of the image, and at least one half of the height. See the following examples for reference.  
 
-    <img src="./examples/input-1.jpg" alt="Example Input 1" width="300"/>
-    <img src="./examples/input-2.jpg" alt="Example Input 2" width="300"/>
+    <img src="./src/images/input/input-1.jpg" alt="Example Input 1" width="300"/>
+    <img src="./src/images/input/input-2.jpg" alt="Example Input 2" width="300"/>
 
 
 2. The reference object should be a distinctive green circle with a diameter of 1 inch. (To change this requirement, read [below](#changing-the-reference-object).)
@@ -44,19 +44,19 @@ To run the project in your browser with [Streamlit](https://streamlit.io/), foll
 ~~~
 pip install streamlit
 ~~~
-2. Make sure you're in the `src/` directory and run 
+2. Make sure you're in the [`src/`](https://github.com/snykra/ear-detection/tree/master/src) directory and run 
 ~~~
 streamlit run st-app.py
 ~~~
 3. Open `http://localhost:8501/` in your browser. 
 
-4. Upload a well-cropped image (see examples in `examples/input/` directory) and that's all! 
+4. Upload a well-cropped image (see examples in [`src/images/input/`](https://github.com/snykra/ear-detection/tree/master/src/images/input) directory) and that's all! 
 
 ## Running without Streamlit
 
-1. Copy your input image into the `src/images/input/` directory.
+1. Copy your input image into the [`src/images/input/`](https://github.com/snykra/ear-detection/tree/master/src/images/input)directory.
 
-2. Make sure you're in the `src/` directory and run 
+2. Make sure you're in the [`src/`](https://github.com/snykra/ear-detection/tree/master/src) directory and run 
 ~~~
 python3 main.py [your-filename]
 ~~~
@@ -65,18 +65,18 @@ python3 main.py [your-filename]
 
 1. Download the data and labels from [here](##TODO). 
 
-2. If you want to make changes to the model, edit the `src/model/train-model.py` [file](https://github.com/snykra/ear-detection/blob/master/src/model/train-model.py). Remember to update the name of the saved model to make sure pre-trained models are not overwritten. 
+2. If you want to make changes to the model, edit [`src/model/train-model.py`](https://github.com/snykra/ear-detection/blob/master/src/model/train-model.py). Remember to update the name of the saved model to make sure pre-trained models are not overwritten. 
 
-3. Change to the `src/model` directory and run 
+3. Change to the [`src/model`](https://github.com/snykra/ear-detection/tree/master/src/model) directory and run 
 ~~~
 python3 train-model.py
 ~~~
 
-4. Update the name of the model used to detect landmarks in the `find-landmarks()` function in `src/utils.py`. 
+4. Update the name of the model used to detect landmarks in the `find-landmarks()` function in [`src/utils.py`](https://github.com/snykra/ear-detection/blob/master/src/utils.py). 
 
 ## Changing the reference object
 
-The reference object is found using the code in the `calculate-size-ratio()` function in `src/utils.py`.
+The reference object is found using the code in the `calculate-size-ratio()` function in [`src/utils.py`](https://github.com/snykra/ear-detection/blob/master/src/utils.py).
 
 To **change the color** of the reference object, update the HSV color range, represented by the `lower` and `upper` variables, using this [answer](https://stackoverflow.com/a/48367205) as a reference.
 
