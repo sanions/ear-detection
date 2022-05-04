@@ -11,32 +11,30 @@ from tensorflow.keras.optimizers import Adam
 
 def load_data(size=3000):
 
-    # make X
+    # make X - images
     for i in range(0, size):
-
         img_path = 'data/train/images/train_' + str(i) + '.png'
         img = image.load_img(img_path)
         x = image.img_to_array(img)
         x = np.expand_dims(x, axis=0)
         x = preprocess_input(x)
-        if (i == 0):            # if first image
+        if (i == 0): # if it's the first image, initialize X
             X = x
             continue
-        X = np.vstack((X, x))       # if not first image
+        X = np.vstack((X, x))
 
-    # make Y 
-    for i in range(0, size):        # take the landmarks
-
+    # make Y - landmarks
+    for i in range(0, size):
         txt_path = 'data/train/landmarks/train_' + str(i) + '.txt'
         with open(txt_path, 'r') as f:
             lines_list = f.readlines()
 
-            for j in range(3, 58):      # in landmark text files, landmarks start at 3rd line end in 57th
+            for j in range(3, 58): # in landmark text files, landmarks start at 3rd line end in 57th
                 string = lines_list[j]
                 str1, str2 = string.split(' ')
                 x_ = float(str1)
                 y_ = float(str2)
-                if (j == 3):            # if first landmark point
+                if (j == 3): # if it's the first landmark point, initilialize temp_x, temp_y
                     temp_x = np.array(x_)
                     temp_y = np.array(y_)
                     continue
@@ -45,12 +43,11 @@ def load_data(size=3000):
                 temp_x = np.hstack((temp_x, x_))
                 temp_y = np.hstack((temp_y, y_))
 
-        if (i == 0):  # if first image's landmarks
+        if (i == 0):  # if it's the first image, initialize Y
             Y = np.hstack((temp_x, temp_y))
             Y = Y[None, :]
             continue
 
-        # if not first image's landmarks
         temp = np.hstack((temp_x, temp_y))
         temp = temp[None, :]
         Y = np.vstack((Y, temp))
@@ -58,7 +55,13 @@ def load_data(size=3000):
     return X, Y
 
 def train(X, Y):
+    '''Creates a CNN model architecture and fits it to the data given. '''
+
     model = Sequential()
+
+    # TODO: to change the model architecture, edit below
+
+    ## CNN-MODEL-3.H5
 
     model.add(Conv2D(32, (4, 4), input_shape=(224, 224, 3), activation='relu'))
     model.add(Conv2D(32, (4, 4), activation='relu'))
@@ -81,6 +84,9 @@ def train(X, Y):
     model.add(Dense(1500, activation='relu'))
 
     model.add(Dense(110, activation='relu'))
+
+    ## CNN-MODEL-2.H5 
+
     # model.add(Conv2D(16, (3, 3), input_shape=(224, 224, 3), kernel_initializer='random_uniform', activation='relu'))
 
     # model.add(Conv2D(32, (3, 3), activation='relu'))
@@ -116,7 +122,7 @@ def train(X, Y):
 
     model.fit(X, Y, epochs=500, batch_size=64)
 
-    model.save("../pretrained-models/cnn-models/cnn-model-2.h5") # TODO: change model name here to prevent overwriting
+    model.save("../pretrained-models/cnn-models/cnn-model-3.h5") # TODO: change model name here to prevent overwriting
 
     model.summary()
 
