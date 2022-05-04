@@ -14,11 +14,11 @@ def calculate_size_ratio(img):
     # lower and upper ranges in HSV colors for the color of the reference object -- currently, GREEN
     # TODO: to find a different color, use https://i.stack.imgur.com/gyuw4.png and instruction here: https://stackoverflow.com/a/48367205
     lower = np.array([30, 75, 20])
-    upper = np.array([60, 255, 255])
+    upper = np.array([80, 255, 255])
     mask = cv2.inRange(imghsv, lower, upper)
 
     # find contours/shapes with colors
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     im = np.copy(img)
 
     # draw contours for visualization
@@ -27,9 +27,10 @@ def calculate_size_ratio(img):
     valid_count = 0    # counter to track number of valid contours found --- should only be 1
     for contour in contours:
         # make sure the number of points that mark this contour/shape is large enough -- filters out random spots of color found in image
-        if len(contour) < 200: 
-            continue
+        if len(contour) < 800: 
+            continue    
 
+        print(len(contour))
         # find the leftmost, rightmost, topmost, bottommost points to use for calculating measurements of the reference object
         minX = img.shape[1]
         minY = img.shape[0]
@@ -54,9 +55,11 @@ def calculate_size_ratio(img):
         w = maxX - minX
 
         # since reference object is a circle, the height/width ratio should be close-ish to 1 
-        if abs(1 - h/w) <= 0.1: 
+        if abs(1 - h/w) <= 0.2: 
             valid_count += 1
             cv2.rectangle(im, (minX, minY), (maxX, maxY), (255, 0, 255), 10) # draw a rectangle around reference object 
+
+    cv2.imwrite("./images/progress/reference_object.jpg", im)
 
     # errors if the reference object was not properly found
     if valid_count > 1:
@@ -66,7 +69,6 @@ def calculate_size_ratio(img):
         print('reference object not found.')
         return
 
-    cv2.imwrite("./images/progress/reference_object.jpg", im)
 
     # calculate ratio -- TODO: change metric to represent actual size of reference object
     metric = 1 # inch
