@@ -154,6 +154,10 @@ To **change the dimensions**, update the `metric` variable.
 ### Datasets
 See sheet [here](https://docs.google.com/spreadsheets/d/1V0Uz_a1sO2GemPQG_aZdIIxw7FyNRtB7P2EzyRpHeF0/edit?usp=sharing).
 
+1. **i-Bug Dataset Cropped to Ears** -- used for training final CNN models, as they were already annotated with 55 landmarks - download [here](https://www.dropbox.com/sh/kzj467f1koiumhu/AAADhGmxDZzcoZv09tByarTHa?dl=0).
+
+2. **AMI Dataset** -- manually annotated subsets 1, 2, and 3 - landmarks csv file contains x and y coordinates the top of ear and entrance to ear canal - download [here](https://www.dropbox.com/sh/3bef5nhm3zmwnp1/AADW4t2xWZv4pNggIM3ufYxla?dl=0).
+
 ### Haar Cascades for Ear Detection
 1. https://github.com/celiacintas/tests_landmarks/blob/master/files/cascade_lateral_ears_opencv.xml
 2. https://github.com/shivangbansal/Haar-Cascade-Ear-Training
