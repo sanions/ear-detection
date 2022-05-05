@@ -92,6 +92,31 @@ def train(X, Y):
 
     model.add(Dense(110))
 
+
+    ## CNN-MODEL-3.H5 
+
+    # model.add(Conv2D(32, (4, 4), input_shape=(224, 224, 3), activation='relu'))
+    # model.add(Conv2D(32, (4, 4), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.1))
+
+    # model.add(Conv2D(32, (3, 3), activation='relu'))
+    # model.add(Conv2D(32, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.2))
+
+    # model.add(Conv2D(64, (3, 3), activation='relu'))
+    # model.add(Conv2D(64, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.3))
+
+    # model.add(Flatten())
+    # model.add(Dense(1500, activation='relu'))
+    # model.add(Dropout(0.5))
+    # model.add(Dense(1500, activation='relu'))
+
+    # model.add(Dense(110, activation='relu'))
+
     adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
 
     model.compile(optimizer=adam, loss="mean_squared_error", metrics=["accuracy"])
