@@ -30,7 +30,6 @@ def calculate_size_ratio(img):
         if len(contour) < 800: 
             continue    
 
-        print(len(contour))
         # find the leftmost, rightmost, topmost, bottommost points to use for calculating measurements of the reference object
         minX = img.shape[1]
         minY = img.shape[0]
@@ -137,10 +136,9 @@ def find_landmarks(X, img):
     coords = []
     for p in range(len(pred)):
         if p < 55:
-            pred[p] = int(pred[p] * dims[1])
-            pred[p+55] = int(pred[p+55] * dims[0])
-        if p in [0, 35, 36]:
-            print(str(pred[p]) + ' ' + str(pred[p+55]))
+            pred[p] = int(pred[p] * dims[1]) # rescale x coordinates to original dimensions
+            pred[p+55] = int(pred[p+55] * dims[0]) # y coordinates
+        if p in [0, 35, 36]: # landmark 0 = top of ear; landmarks 35 & 36 = ear canal
             coords.append((pred[p], pred[p+55]))
             plt.scatter([pred[p]], [pred[p+55]])
 
@@ -149,10 +147,3 @@ def find_landmarks(X, img):
     plt.close()
 
     return coords[0], coords[1], coords[2]
-
-
-
-
-
-
-

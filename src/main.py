@@ -26,4 +26,4 @@ if __name__ == '__main__':
     args = sys.argv
     filename = args[1]
     img = cv2.imread('./images/input/' + filename)
-    main(input_img=img)
+    main(img)
