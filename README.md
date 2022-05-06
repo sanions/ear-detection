@@ -149,6 +149,22 @@ To **change the color** of the reference object, update the HSV color range, rep
 
 To **change the dimensions**, update the `metric` variable.
 
+## Example 
+
+### Input 
+<img src="./src/images/input/input-1.jpg" alt="Example Input 1" height="300"/>
+
+### Reference Object 
+<img src="./src/images/progress/reference_object.jpg" alt="Reference Object" height="300">
+
+### Ear Detected and Cropped
+<img src="./src/images/progress/detected_ears.jpg" alt="Detected Ears" height="300">
+<img src="./src/images/progress/cropped_img.jpg" alt="Cropped Image" height="300">
+
+### Landmarks
+<img src="./src/images/result/img_landmarks.jpg" alt="Ear Landmarks" height="300">
+
+
 ## References
 
 ### Datasets
