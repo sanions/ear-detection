@@ -82,8 +82,3 @@
 # zipp==3.8.1
 
 
-opencv-python-headless
-numpy
-keras
-tensorflow
-matplotlib
