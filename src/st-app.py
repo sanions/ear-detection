@@ -8,6 +8,8 @@ from main import main
 
 st.title("Ear Detection")
 
+st.write("Refer to the Github repo at https://github.com/sanions/whisper-ear-detection for a description, instructions, and example inputs.")
+
 uploaded_file = st.file_uploader("Choose an image", type=['jpg', 'png', 'jpeg'])
 
 if uploaded_file is not None:
